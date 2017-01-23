@@ -11,9 +11,53 @@
 |
 */
 
+Route::get('login', function(){
+		return view('login');
+});
 
+Route::group(['middleware' => ['web']], function() {
+	Route::get('/', function(){
+		return view('login');
+	});
+
+	Route::post('/register', [
+		'uses' => 'UserController@postSignUp',
+		'as' => 'register'
+	]);
+
+	Route::post('/login', [
+		'uses' => 'UserController@postSignIn',
+		'as' => 'login'
+	]);
+
+
+	Route::get('home', [
+		'uses' => 'UserController@getHome',
+		'as' => 'home'
+	]);
+});
+
+
+
+
+Route::get('register', function(){
+		return view('register');
+});
+
+
+/*
 Route::get('home', function (){
-	return view('index');
+	return view('admin/index');
+});
+*/
+Route::get('patients', function (){
+	return view('admin/patients');
+});
+Route::get('prescription', function(){
+	return view('admin/prescription');
+});
+Route::get('prescriptionAdd', function(){
+	return view('admin/prescriptionAdd');
 });
 
 Route::get('test', 'TestController@index');
