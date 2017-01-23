@@ -35,7 +35,17 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Register a new membership</p>
-
+    @if(count($errors) > 0)
+      <div class="row">
+        <div class="col-md-12">
+          <ul>
+            @foreach($errors->all() as $error)
+              <li>{{$error}}</li>
+            @endforeach
+          </ul>
+        </div>
+      </div>
+    @endif
     <form action="{{ route('register') }}" method="post">
 			<div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Full name" name="name">
