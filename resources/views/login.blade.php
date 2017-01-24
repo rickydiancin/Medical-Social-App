@@ -35,20 +35,10 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session {{ Session::get('message') }}</p>
-    @if(count($errors) > 0)
-      <div class="row">
-        <div class="col-md-12">
-          <ul>
-            @foreach($errors->all() as $error)
-              <li>{{$error}}</li>
-            @endforeach
-          </ul>
-        </div>
-      </div>
-    @endif
+    @include('message-block')
     <form action="{{ route('login') }}" method="post">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Username" name="email">
+        <input type="text" class="form-control" placeholder="Username" name="email" value="{{ Request::old('email') }}">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">

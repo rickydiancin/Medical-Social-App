@@ -30,10 +30,27 @@ Route::group(['middleware' => ['web']], function() {
 		'as' => 'login'
 	]);
 
-
 	Route::get('home', [
-		'uses' => 'UserController@getHome',
+		'uses' => 'UserController@getHome', //UserController@getHome
 		'as' => 'home'
+	]);
+
+	Route::get('/dashboard', [
+		'uses' => 'PostController@getDashboard', // Redirect to userController ang call getDashboard function
+		'as' => 'dashboard',
+		'middleware' => 'auth'
+	]);
+
+	Route::Post('/createpost', [
+		'uses' => 'PostController@postCreatePost',
+		'as' => 'post.create',
+		'middleware' => 'auth'
+	]);
+
+	Route::get('/delete-post/{post_id}', [
+		'uses' => 'PostController@getDeletePost',
+		'as' => 'post.delete',
+		'middleware' => 'auth'
 	]);
 });
 
@@ -42,7 +59,7 @@ Route::group(['middleware' => ['web']], function() {
 
 Route::get('register', function(){
 		return view('register');
-});
+})->middleware('auth');
 
 
 /*
@@ -52,12 +69,19 @@ Route::get('home', function (){
 */
 Route::get('patients', function (){
 	return view('admin/patients');
-});
+})->middleware('auth');
 Route::get('prescription', function(){
 	return view('admin/prescription');
-});
+})->middleware('auth');
 Route::get('prescriptionAdd', function(){
 	return view('admin/prescriptionAdd');
-});
+})->middleware('auth');
+
+
+
+
+
+
+
 
 Route::get('test', 'TestController@index');
