@@ -18,7 +18,7 @@
 		<div class="col-md-6 col-md-offset-3">
 			<header><h3>What other people say...</h3></header>
 			@foreach($posts as $post)
-			<article class="post">
+			<article class="post" data-postId="{{ $post->id }}">
 				<p>{{ $post->body }}</p>
 				<div class="info">
 					Posted by {{ $post->user->name }} on {{ $post->created_at }}
@@ -26,8 +26,10 @@
 				<div class="interaction">
 					<a href="#">Like</a> |
 					<a href="#">Dislike</a> |
-					<a href="#">Edit</a> |
-					<a href="{{ route('post.delete', ['post_id' => $post->id]) }}">Delete</a> <!-- passing the posted id -->
+					@if(Auth::user() == $post->user)
+						<a href="#" class="edit">Edit</a> |
+						<a href="{{ route('post.delete', ['post_id' => $post->id]) }}">Delete</a> <!-- passing the posted id -->
+					@endif
 				</div>
 			</article>
 			@endforeach

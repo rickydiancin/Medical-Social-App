@@ -52,6 +52,16 @@ Route::group(['middleware' => ['web']], function() {
 		'as' => 'post.delete',
 		'middleware' => 'auth'
 	]);
+
+	Route::get('/logout', [
+		'uses' => 'UserController@getLogout',
+		'as' => 'logout'
+	]);
+
+	// edit post from modal
+	Route::post('/edit', function(\Illuminate\Http\Request $request){
+		return response()->json(['message' => $request['postId']]);
+	})->name('edit');
 });
 
 

@@ -59,7 +59,7 @@
         <section class="content">
             <!-- Your Page Content Here -->
             @yield('content')
-            @include('myModal')
+            
 
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->

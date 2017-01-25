@@ -3,12 +3,13 @@ namespace App\Http\Controllers;
 
 use App\Post; // use post method from post.php
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
 	public function getDashboard()
 	{
-		$posts  = Post::all(); //Fetch all post | built queries
+		$posts  = Post::orderBy('created_at', 'desc')->get(); //Fetch all post | built queries
 		return view('admin/dashboard', ['posts' => $posts]); //specify variable in the array to pass
 	}
 	public function postCreatePost(Request $request)
@@ -29,6 +30,10 @@ class PostController extends Controller
 	public function getDeletePost($post_id)
 	{
 			$post = Post::where('id', $post_id)->first();
+			if (Auth::user() != $post->user)
+			{
+				return redirect()->back();
+			}
 			$post->delete();
 			return redirect()->route('dashboard')->with(['message' => 'Successfully deleted']);
 	}

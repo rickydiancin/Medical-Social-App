@@ -1,0 +1,12 @@
+create blade: dashboard
+created a model: Post
+	- php artisan make:model Post -m
+		Created:
+			Post.php <- providers folder
+			post_table <- migrations
+Created a new PostController
+
+			
+
+Create SRC file under Public folder
+	src -> app.js

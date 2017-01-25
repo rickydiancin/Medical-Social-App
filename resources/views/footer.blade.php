@@ -13,11 +13,12 @@
     <!-- REQUIRED JS SCRIPTS -->
     <!-- jQuery 2.1.3 -->
     <script src="{{ asset("/bower_components/AdminLTE/plugins/jQuery/jQuery-2.2.3.min.js")}}"></script>
+		<script src="{{ asset("/src/app.js") }}" rel="javscript"></script>
     <!-- Bootstrap 3.3.2 JS -->
     <script src="{{ asset("/bower_components/AdminLTE/bootstrap/js/bootstrap.min.js")}}" type="text/javascript"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset("/bower_components/AdminLTE/dist/js/app.min.js")}}" type="text/javascript"></script>
-
+		@include('myModal')
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
     Both of these plugins are recommended to enhance the
     user experience -->
@@ -30,6 +31,7 @@
 		<!-- Morris.js charts -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 		<script src="{{ asset("/bower_components/AdminLTE/plugins/morris/morris.min.js")}}"></script>
+
 		<!-- Sparkline -->
 		<script src="{{ asset("/bower_components/AdminLTE/plugins/sparkline/jquery.sparkline.min.js")}}"></script>
 		<!-- jvectormap -->

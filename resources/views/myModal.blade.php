@@ -119,3 +119,42 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+<!-- EDIT POST -->
+<!-- EDIT -->
+<div class="modal fade" id="deletePost" tabindex="-1" role="dialog" aria-labelledby="favoritesModalLabel">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="favoritesModalLabel">Edit Post</h4>
+      </div>
+      <div class="modal-body">
+				<form>
+          <div class="form-group">
+            <label for="post-body">Edit the Post</label>
+            <textarea name="post-body" id="post-body" class="form-control" rows="5"></textarea>
+          </div>
+        </form>
+			</div>
+			<div class="modal-footer">
+				<span class="pull-right">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" id="modal-save">Save Changes</button>
+				</span>
+			</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var token = '{{ Session::token() }}';
+  var url = '{{ route('edit')}}';
+</script>
